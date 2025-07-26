@@ -26,12 +26,30 @@
 
 function isPalindrome(num){
     //negative numbers cannot be palindrome
-    if(num<0) return false
+    //if(num<0) return false
     // num to string 
-    let numToStr = num.toString()
+    //let numToStr = num.toString()
     //reverse the number and compare it with 
-    return numToStr === numToStr.split('').reverse().join('')
+    //return numToStr === numToStr.split('').reverse().join('')
+
+    //lets solve this palindrome number with optimal approach without converting it to the string 
+
+    //if number is negative, totally divided by 10 means modulus ===0 but the number shouldn't be 0, it gives false right.
+    if(num<0 || (num%10===0 && num!==0)) return false
+
+    let rev = 0
+    while(num>rev){
+        rev = rev*10 + num%10
+        num = Math.floor(num/10)
+    }
+    //for even x===rev and for odd x===Math.floor(rev/10)
+    return num===rev || num===Math.floor(rev/10)
+
 }
+
+
+
+
 //test cases
 console.log(isPalindrome(1221),'true')
 console.log(isPalindrome(12),'false')
