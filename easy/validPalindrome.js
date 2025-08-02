@@ -37,7 +37,7 @@
 
 function isPalindrome(s){
 //keep aplhanumeric characters and convert it to the lowercase
- let S = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()
+ let S = s.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() // everything is get replaced by '' but not a-zA-Z0-9
  //check the palindrome
  return S === S.split('').reverse().join('')
 }
