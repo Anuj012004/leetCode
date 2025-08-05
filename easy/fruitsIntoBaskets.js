@@ -58,20 +58,36 @@
  * @return {number}
  */
 var numOfUnplacedFruits = function(fruits, baskets) {
-  let placedFruits = []; // will store only successfully placed fruits
-    let used = Array(baskets.length).fill(false); // track used baskets
+//   let placedFruits = []; // will store only successfully placed fruits
+//     let used = Array(baskets.length).fill(false); // track used baskets
 
-    for (let i = 0; i < fruits.length; i++) {
-        for (let k = 0; k < baskets.length; k++) {
-            if (!used[k] && fruits[i] <= baskets[k]) {
-                placedFruits.push(fruits[i]); // only push once when placed
-                used[k] = true; // mark basket as used
-                break; // move to next fruit
-            }
+//     for (let i = 0; i < fruits.length; i++) {
+//         for (let k = 0; k < baskets.length; k++) {
+//             if (!used[k] && fruits[i] <= baskets[k]) {
+//                 placedFruits.push(fruits[i]); // only push once when placed
+//                 used[k] = true; // mark basket as used
+//                 break; // move to next fruit
+//             }
+//         }
+//     }
+
+//     return fruits.length - placedFruits.length;
+
+
+ let fruitNotPlaced = 0
+ for(let i =0 ;i<fruits.length; i++){
+    let isPlaced = false
+    for(let j=0; j<baskets.length; j++){
+        if(fruits[i]<=baskets[j]){
+            isPlaced = true
+            baskets[j] = -1
+            break
+
         }
     }
-
-    return fruits.length - placedFruits.length;
+    if(!isPlaced)fruitNotPlaced++
+ }
+ return fruitNotPlaced
     
 };
 
