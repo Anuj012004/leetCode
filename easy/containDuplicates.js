@@ -47,15 +47,30 @@
  * @return {boolean}
  */
 var containsDuplicate = function(nums) {
-    //loop through the nums to grab the first number 
-    for(let i =0 ; i<nums.length; i++){
-        //loop to grab the another num 
-        for(let j=i+1; j<nums.length ; j++){
-            //compare the first number to check it appears twice in the nums array
-        if(nums[i]===nums[j]){
+
+    //Brute force approach 
+
+    // //loop through the nums to grab the first number 
+    // for(let i =0 ; i<nums.length; i++){
+    //     //loop to grab the another num 
+    //     for(let j=i+1; j<nums.length ; j++){
+    //         //compare the first number to check it appears twice in the nums array
+    //     if(nums[i]===nums[j]){
+    //         return true
+    //     }
+    //     }
+    // }
+    // return false
+
+    //an optimal appproach using set 
+
+    let uniqueOnly = new Set()
+
+    for(let val of nums){
+        if(uniqueOnly.has(val)){
             return true
         }
-        }
+        uniqueOnly.add(val)
     }
     return false
 };
