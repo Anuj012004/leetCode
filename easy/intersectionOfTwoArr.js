@@ -36,17 +36,36 @@
  * @return {number[]}
  */
 var intersection = function(nums1, nums2) {
-    //initialize the var to store the result
-    let result = []
-    //grab the first element from the nums1
-    for(let i=0; i<nums1.length; i++){
-        for(let j=0; j<nums2.length; j++){
-            if(nums1[i]===nums2[j]){
-                result.push(nums1[i])
-            }
-        }
+    // //initialize the var to store the result
+    // let result = []
+    // //grab the first element from the nums1
+    // for(let i=0; i<nums1.length; i++){
+    //     for(let j=0; j<nums2.length; j++){
+    //         if(nums1[i]===nums2[j]){
+    //             result.push(nums1[i])
+    //         }
+    //     }
+    // }
+    // return [... new Set(result)]
+
+
+    //lets solve  this with optimal aproach
+
+    //unique nums 1 and nums 2
+    let num1 = new Set(nums1)
+    let num2 = new Set(nums2)
+    //to store the result 
+    let result = new Set()
+    
+    for(let n of num2){
+       if(num1.has(n)){
+        result.add(n)
+       }
     }
-    return [... new Set(result)]
+
+    return [...result]
+
+
 };
 
 //test cases
