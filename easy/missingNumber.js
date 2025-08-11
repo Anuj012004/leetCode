@@ -69,17 +69,26 @@
  * @return {number}
  */
 var missingNumber = function(nums) {
-    //sort the array in ascending order
-    let sortedArr = nums.sort((a,b)=>a-b)
-    //if zero is missing 
-    if(sortedArr[0] !== 0) return 0
-    //if n is missing 
-    if(sortedArr[sortedArr.length-1]!==sortedArr.length) return sortedArr.length
-    for(let i=0; i<nums.length; i++){
-        if(nums[i]+ 1 !== nums[i+1]){
-            return nums[i] +1
-        }
+    // //sort the array in ascending order
+    // let sortedArr = nums.sort((a,b)=>a-b)
+    // //if zero is missing 
+    // if(sortedArr[0] !== 0) return 0
+    // //if n is missing 
+    // if(sortedArr[sortedArr.length-1]!==sortedArr.length) return sortedArr.length
+    // for(let i=0; i<nums.length; i++){
+    //     if(nums[i]+ 1 !== nums[i+1]){
+    //         return nums[i] +1
+    //     }
+    // }
+     let n = nums.length;
+    let expectedSum = n * (n + 1) / 2;
+    let actualSum = 0;
+
+    for (let num of nums) {
+        actualSum += num;
     }
+
+    return expectedSum - actualSum;
 };
 
 //test cases 
