@@ -28,20 +28,30 @@
 // word -> string, should be in specific order
 // return true if the orders are , all uppercase, all lowercase, first cap rest small, else false
 
+// /**
+//  * @param {string} word
+//  * @return {boolean}
+//  */
+// var detectCapitalUse = function(word) {
+//     let lowercasedWord = word.toLowerCase()
+//     let uppercaseWord = word.toUpperCase()
+//     let firstCap = lowercasedWord[0].toUpperCase() + lowercasedWord.slice(1)
+
+//     if(word === lowercasedWord || word === uppercaseWord || word===firstCap){
+//         return true
+//     }
+//     return false
+// };
+
+//tiny optimal approach enhanced redability
 /**
  * @param {string} word
  * @return {boolean}
  */
 var detectCapitalUse = function(word) {
-    let lowercasedWord = word.toLowerCase()
-    let uppercaseWord = word.toUpperCase()
-    let firstCap = lowercasedWord[0].toUpperCase() + lowercasedWord.slice(1)
-
-    if(word === lowercasedWord || word === uppercaseWord || word===firstCap){
-        return true
-    }
-    return false
+   return word === word.toLowerCase() || word === word.toUpperCase() || word === word[0].toUpperCase() + word.slice(1).toLowerCase()
 };
+
 
 //test cases 
 console.log(detectCapitalUse('USA'),'should be true')
