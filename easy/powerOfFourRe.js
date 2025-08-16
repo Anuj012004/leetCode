@@ -1,0 +1,39 @@
+// // 342. Power Of Four
+
+// Given an integer n, return true if it is a power of four. Otherwise, return false.
+
+// An integer n is a power of four, if there exists an integer x such that n == 4x.
+
+ 
+
+// Example 1:
+
+// Input: n = 16
+// Output: true
+// Example 2:
+
+// Input: n = 5
+// Output: false
+// Example 3:
+
+// Input: n = 1
+// Output: true
+ 
+
+// Constraints:
+
+// -231 <= n <= 231 - 1
+
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isPowerOfFour = function(n) {
+     if (n <= 0) return false; // powers of 4 are positive only
+
+    while (n % 4 === 0) { // keep dividing if divisible by 4
+        n /= 4;
+    }
+
+    return n === 1; // only powers of 4 will reduce to 1
+};
