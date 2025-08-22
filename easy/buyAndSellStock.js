@@ -45,22 +45,39 @@ var maxProfit = function(prices) {
 //         }
 //     }
 //     return maxProfit
+
+
 //optimal approach 
 
-    let minVal = Infinity;
-    let maxProfit = 0;
+    // let minVal = Infinity;
+    // let maxProfit = 0;
 
-    for(let x of prices){
-        if(x < minVal){
-            minVal = x;
-        };
-        let profit = x - minVal;
+    // for(let x of prices){
+    //     if(x < minVal){
+    //         minVal = x;
+    //     };
+    //     let profit = x - minVal;
 
-        if(profit > maxProfit){
-            maxProfit = profit;
-        };
-    };
-    return maxProfit;
+    //     if(profit > maxProfit){
+    //         maxProfit = profit;
+    //     };
+    // };
+    // return maxProfit;
+
+    //------------------------------------------
+
+    let minVal = prices[0]
+    let maxProfit = 0
+    for(let i=1;i<prices.length;i++){
+        if(prices[i]<minVal){
+            minVal = prices[i]
+        }
+        let profit = prices[i]-minVal
+        if(profit> maxProfit){
+            maxProfit = profit
+        }
+    }
+    return maxProfit
 };
 
 
