@@ -39,13 +39,27 @@
  * @return {boolean}
  */
 var checkPerfectNumber = function(num) {
-   let sum = 0
-   for(let i=1; i<num; i++){
-    if(num%i===0){
-        sum+=i
+//    let sum = 0
+//    for(let i=1; i<num; i++){
+//     if(num%i===0){
+//         sum+=i
+//     }
+//    }
+//   return  num===sum
+
+//Optimized
+     if (num <= 1) return false
+    let sum = 1
+    for(let i= 2; i * i<= num; i++){
+        if(num%i===0){
+            sum+=i
+        
+        if (i !== num / i) { 
+            sum += num / i;
+            }
+        }
     }
-   }
-  return  num===sum
+    return num===sum
 };
 
 //Test Cases
