@@ -44,16 +44,32 @@
  * @return {number}
  */
 var areaOfMaxDiagonal = function(dimensions) {
-    let maxDiagonal = 0
-    let maxArea = 0
-    for(let i=0; i<dimensions.length; i++){
-        let calDiagonal =  Math.sqrt(dimensions[i][0]*dimensions[i][0] + dimensions[i][1]*dimensions[i][1])
-        let area = dimensions[i][0]*dimensions[i][1]
-        if(calDiagonal>maxDiagonal || calDiagonal===maxDiagonal && area>maxArea){
-           maxDiagonal = calDiagonal
-           maxArea = area
-        }
+    // let maxDiagonal = 0
+    // let maxArea = 0
+    // for(let i=0; i<dimensions.length; i++){
+    //     let calDiagonal =  Math.sqrt(dimensions[i][0]*dimensions[i][0] + dimensions[i][1]*dimensions[i][1])
+    //     let area = dimensions[i][0]*dimensions[i][1]
+    //     if(calDiagonal>maxDiagonal || calDiagonal===maxDiagonal && area>maxArea){
+    //        maxDiagonal = calDiagonal
+    //        maxArea = area
+    //     }
         
+    // }
+    // return maxArea
+
+    //redable, optimal
+
+    let longestDiagonal = 0
+    let maxArea = 0
+
+    for(let [l,w] of dimensions){
+        let diagonal = Math.sqrt(l*l + w*w)
+        let area = l*w
+
+        if(diagonal>longestDiagonal || diagonal === longestDiagonal && area>maxArea){
+            longestDiagonal = diagonal
+            maxArea = area
+        }
     }
     return maxArea
 };
