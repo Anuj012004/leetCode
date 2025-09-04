@@ -100,3 +100,19 @@ var findClosest = function(x, y, z) {
     return 0
    }
 };
+
+
+
+//cleaner approach, readable
+
+/**
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ * @return {number}
+ */
+var findClosest = function(x, y, z) {
+  let disOfX = Math.abs(z-x)
+  let disOfY = Math.abs(z-y)
+  return (disOfX<disOfY)?1: (disOfX>disOfY)?2:0
+};
