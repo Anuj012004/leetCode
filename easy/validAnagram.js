@@ -38,8 +38,13 @@
 var isAnagram = function(s, t) {
     if(s.length !== t.length) return false
     //conversion of string into arr and sort and re into string
-    let S = s.split('').sort().join('')
-    let T = t.split('').sort().join('')
+    // let S = s.split('').sort().join('')
+    // let T = t.split('').sort().join('')
 
-    return S === T? true:false
+    // return S === T? true:false
+
+    if(s.length !== t.length) return false;
+    return s.split('').sort().join('') === t.split('').sort().join('');
+
+
 };
