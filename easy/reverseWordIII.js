@@ -35,12 +35,16 @@
  * @return {string}
  */
 var reverseWords = function(s) {
-    let arrS = s.split(' ')
-    let res = []
-    for(let i=0; i<arrS.length;i++){
-      res.push(  arrS[i].split('').reverse().join(''))
-    }
-    return res.join(' ').toString()
+    // let arrS = s.split(' ')
+    // let res = []
+    // for(let i=0; i<arrS.length;i++){
+    //   res.push(  arrS[i].split('').reverse().join(''))
+    // }
+    // return res.join(' ').toString()
+
+    //optimal and readable
+
+    return s.split(' ').map((x)=>x.split('').reverse().join('')).join(' ')
 };
 
 
