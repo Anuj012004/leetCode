@@ -37,13 +37,16 @@
  * @return {number}
  */
 var findNumbers = function(nums) {
-let res = []
-for(let i=0; i<nums.length; i++){
-    if(nums[i].toString().length%2===0){
-        res.push(nums[i])
-    }
-}
-return res.length
+// let res = []
+// for(let i=0; i<nums.length; i++){
+//     if(nums[i].toString().length%2===0){
+//         res.push(nums[i])
+//     }
+// }
+// return res.length
+
+ let evenDig = nums.map((x)=>x.toString()).filter((e)=>e.length%2===0)
+ return evenDig.length
 };
 
 //Test cases 
