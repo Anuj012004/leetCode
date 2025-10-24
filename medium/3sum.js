@@ -42,21 +42,46 @@
 //return : all possible triplets so that  i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0. return array 
 
 
+// /**
+//  * @param {number[]} nums
+//  * @return {number[][]}
+//  */
+// var threeSum = function(nums) {
+//     let set = new Set()
+//     for(let i=0; i<nums.length; i++){
+//         for(let j=i+1; j<nums.length; j++){
+//             for(let k=j+1; k<nums.length; k++){
+//                 if((nums[i]+nums[j]+nums[k])===0){
+//                     let triplet = ([nums[i],nums[j],nums[k]].sort((a,b)=>a-b))
+//                     set.add(triplet.toString())
+//                 }
+//             }
+//         }
+//     }
+//     return Array.from(set).map((x)=>x.split(',').map(Number))
+// };
+
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
 var threeSum = function(nums) {
-    let set = new Set()
+    nums.sort((a,b)=>a-b)
+    let arr = []
+    let unique = new Set()
     for(let i=0; i<nums.length; i++){
         for(let j=i+1; j<nums.length; j++){
             for(let k=j+1; k<nums.length; k++){
-                if((nums[i]+nums[j]+nums[k])===0){
-                    let triplet = ([nums[i],nums[j],nums[k]].sort((a,b)=>a-b))
-                    set.add(triplet.toString())
+                if(nums[i]+nums[j]+nums[k] ==0){
+                    let triplet = [nums[i],nums[j],nums[k]]
+                    let tripStr = triplet.join(',')
+                    if(!unique.has(tripStr)){
+                        unique.add(tripStr)
+                        arr.push(triplet)
+                    }
                 }
             }
         }
     }
-    return Array.from(set).map((x)=>x.split(',').map(Number))
+    return arr
 };
