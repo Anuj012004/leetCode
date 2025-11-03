@@ -71,37 +71,54 @@
  * @return {string[]}
  */
 var findWords = function(words) {
-    let row1 = 'qwertyuiop'
-    let row2 =  'asdfghjkl'
-    let row3 = 'zxcvbnm'
-    let result = []
+    // let row1 = 'qwertyuiop'
+    // let row2 =  'asdfghjkl'
+    // let row3 = 'zxcvbnm'
+    // let result = []
 
-    //convert the word of words to lowercase
-    for(let word of words){
-    let lowerCasedWord =  word.toLowerCase()
+    // //convert the word of words to lowercase
+    // for(let word of words){
+    // let lowerCasedWord =  word.toLowerCase()
 
-    //to check the first letter of the word belongs to which low
-    let row
-    if(row1.includes(lowerCasedWord[0])){
-        row = row1
-    }else if(row2.includes(lowerCasedWord[0])){
-        row = row2
-    }else if(row3.includes(lowerCasedWord[0])){
-        row = row3
-    }
-    //check all belongs to the same row
-    let belonged = true
-    for(let char of lowerCasedWord){
-        if(!row.includes(char)){
-            belonged = false
-            break;
-        }
-    }
-    if(belonged){
-        result.push(word)
-    }
-    }
-    return  result
+    // //to check the first letter of the word belongs to which low
+    // let row
+    // if(row1.includes(lowerCasedWord[0])){
+    //     row = row1
+    // }else if(row2.includes(lowerCasedWord[0])){
+    //     row = row2
+    // }else if(row3.includes(lowerCasedWord[0])){
+    //     row = row3
+    // }
+    // //check all belongs to the same row
+    // let belonged = true
+    // for(let char of lowerCasedWord){
+    //     if(!row.includes(char)){
+    //         belonged = false
+    //         break;
+    //     }
+    // }
+    // if(belonged){
+    //     result.push(word)
+    // }
+    // }
+    // return  result
+
+    //optimal approach to solve this using set and every
+
+    let row1 = new Set('qwertyuiop')
+    let row2 = new Set('asdfghjkl')
+    let row3 = new Set('zxcvbnm')
+
+    let rows = [row1, row2, row3]
+
+    //now check lowercase the word of words and check the first letter belong to which row
+    return words.filter((word)=>{
+        let lower = word.toLowerCase()
+        //to get the belonging row
+        let row = rows.find((x)=>x.has(lower[0]))
+        //to check all the character of the string belonging to the same row 
+        return [...lower].every(x=>row.has(x))
+    })
 };
 
 //TEST CASES
