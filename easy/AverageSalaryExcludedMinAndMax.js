@@ -42,10 +42,21 @@
  * @return {number}
  */
 var average = function(salary) {
-    salary.sort((a,b)=>a-b).pop()
-    salary.shift()
+    // salary.sort((a,b)=>a-b).pop()
+    // salary.shift()
     
-    return salary.reduce((a,b)=> a+b,0) / salary.length
+    // return salary.reduce((a,b)=> a+b,0) / salary.length
+
+    let min = Infinity
+    let max = -Infinity
+
+    let sum = 0
+    for(let x of salary){
+        sum+=x
+        if(x<min) min=x
+        if(x>max) max = x
+    }
+    return (sum-min-max)/(salary.length-2)
 };
 
 
