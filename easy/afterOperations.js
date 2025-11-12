@@ -54,13 +54,15 @@
  * @return {number}
  */
 var finalValueAfterOperations = function(operations) {
-    let x=0
-    for(let o of operations){
-        if(o.includes('++')){
-            x++
-        }else{
-            x--
-        }
-    }
-    return x
+    // let x=0
+    // for(let o of operations){
+    //     if(o.includes('++')){
+    //         x++
+    //     }else{
+    //         x--
+    //     }
+    // }
+    // return x
+
+    return operations.reduce((x,o)=>(o.includes('++')?1:-1)+x,0)
 };
