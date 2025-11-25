@@ -4,7 +4,7 @@
 // premium lock icon
 // Companies
 // Hint
-// You are given a string s. The score of a string is defined as the sum of the absolute difference between the ASCII values of adjacent characters.
+// You are given a string s. The score of a string is defined as the res of the absolute difference between the ASCII values of adjacent characters.
 
 // Return the score of s.
 
@@ -38,7 +38,7 @@
 // s consists only of lowercase English letters.
 
 //string -> always lowercase english letters, length of string is 2 or more than 2, no uppercase, no numbers in it 
-//return -> score -> score is the sum of absolute difference between the ascii value of letters
+//return -> score -> score is the res of absolute difference between the ascii value of letters
 
 
 
@@ -47,14 +47,18 @@
  * @return {number}
  */
 var scoreOfString = function(s) {
-    let asciiVal = [...s].map((x,i)=>s.charCodeAt(i))
-    let arr = []
-    let sum = 0
-    for(let i=0; i<asciiVal.length-1; i++){
-       arr.push(Math.abs(asciiVal[i] - asciiVal[i+1]))
+    // let asciiVal = [...s].map((x,i)=>s.charCodeAt(i))
+    // let arr = []
+    // for(let i=0; i<asciiVal.length-1; i++){
+    //    arr.push(Math.abs(asciiVal[i] - asciiVal[i+1]))
 
+    // }
+    // return arr.reduce((a,b)=>a+b,0)
+    let res = 0
+    for(let i=0; i<s.length-1; i++){
+        res+= Math.abs(s.charCodeAt(i)-s.charCodeAt(i+1))
     }
-    return arr.reduce((a,b)=>a+b,0)
+    return res
 };
 
 //Test cases
