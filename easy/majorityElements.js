@@ -40,17 +40,36 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-    let freq = {}
-    let majorityElement = nums[0]
-    let maxCount = 0
-    for(let element of nums){
-        freq[element] = (freq[element] || 0) +1
+    // let freq = {}
+    // let majorityElement = nums[0]
+    // let maxCount = 0
+    // for(let element of nums){
+    //     freq[element] = (freq[element] || 0) +1
 
-        if(freq[element] > maxCount){
-            maxCount = freq[element]
-            majorityElement = element
+    //     if(freq[element] > maxCount){
+    //         maxCount = freq[element]
+    //         majorityElement = element
+    //     }
+    // }
+
+    // return majorityElement
+
+
+    let map = new Map()
+    for(let num of nums){
+        map.set(num, (map.get(num)||0)+1)
+    }
+    let maxVal= 0
+    let res =0
+    for(let [key,value] of map){
+        if(value>maxVal){
+            maxVal = value
+            res = key
         }
     }
-
-    return majorityElement
+    return res
 };
+
+//TEST CASE
+
+console.log(majorityElement([3,2,3]))
