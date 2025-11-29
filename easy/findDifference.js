@@ -41,17 +41,28 @@
  */
 var findTheDifference = function(s, t) {
     if(s.length===0) return t
-    let map = new Map()
+    // let map = new Map()
 
-    for(let ch of s){
-        map.set(ch, (map.get(ch)||0)+1)
+    // for(let ch of s){
+    //     map.set(ch, (map.get(ch)||0)+1)
+    // }
+    // for(let ch of t){
+    //     if(!map.has(ch) ||( map.get(ch)===0)){
+    //         return ch
+    //     }
+    //     map.set(ch, (map.get(ch))-1)
+    // }
+
+    let sum =0
+
+    for(let c of t){
+        sum += c.charCodeAt(0)
     }
-    for(let ch of t){
-        if(!map.has(ch) ||( map.get(ch)===0)){
-            return ch
-        }
-        map.set(ch, (map.get(ch))-1)
+    for(let c of s){
+        sum -=c.charCodeAt(0)
     }
+
+    return String.fromCharCode(sum)
 };
 
 //test cases
