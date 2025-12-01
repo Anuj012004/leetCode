@@ -72,30 +72,49 @@ var nextGreaterElement = function(nums1, nums2) {
     //     }
     // }
     // return greaterEle
+//-------------------------------------------------------------------------
 
+    // let greaterEle = []
+    // let map = new Map()
 
-    let greaterEle = []
-    let map = new Map()
+    // for(let i=0; i<nums2.length; i++){
+    //     map.set(nums2[i],i)}
+    //      for (let k= 0;k<nums1.length;k++) {
+    //         let digit = nums1[k]
+    //         let index = map.get(digit)
+    //         let num = -1
 
-    for(let i=0; i<nums2.length; i++){
-        map.set(nums2[i],i)}
-         for (let k= 0;k<nums1.length;k++) {
-            let digit = nums1[k]
-            let index = map.get(digit)
-            let num = -1
-
-            for(let j=index+1; j<nums2.length; j++){
-                if(nums2[j] >digit){
-                    num = nums2[j]
-                    break
-                }
-            }
-            greaterEle.push(num)
+    //         for(let j=index+1; j<nums2.length; j++){
+    //             if(nums2[j] >digit){
+    //                 num = nums2[j]
+    //                 break
+    //             }
+    //         }
+    //         greaterEle.push(num)
             
 
-        }
+    //     }
     
-    return greaterEle
+    // return greaterEle
+
+    //----------------------------------------------------------------------
+
+    let map = new Map()
+    let stack = []
+
+    for(let num of nums2){
+        while(stack.length>0 && num>stack[stack.length-1]){
+            let top = stack.pop()
+            map.set(top,num)
+        }
+       stack.push(num)
+    }
+
+    while(stack.length>0){
+        map.set(stack.pop(),-1)
+    }
+
+    return nums1.map(x=>map.get(x))
 }
 
 //test cases
