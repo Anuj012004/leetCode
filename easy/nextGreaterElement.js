@@ -50,27 +50,51 @@
  * @return {number[]}
  */
 var nextGreaterElement = function(nums1, nums2) {
-    //to store the greater elements
+    // //to store the greater elements
+    // let greaterEle = []
+    // //use loop to check if nums1[i] == nums2[i]
+    // for(let i=0; i<nums1.length; i++){
+    //     //grab the num1[i]
+    //     let digit = nums1[i]
+    //     for(let j=0 ; j<nums2.length; j++){
+    //         let greater = -1
+    //         let digit2 = nums2[j]
+    //         if(digit == digit2){
+    //             for(let m=(j+ 1); m<nums2.length; m++){
+    //                 if(nums2[m]>nums2[j]){
+    //                     greater = nums2[m]
+    //                     break
+    //                 }
+    //             }
+    //             greaterEle.push(greater)
+    //             break
+    //         }
+    //     }
+    // }
+    // return greaterEle
+
+
     let greaterEle = []
-    //use loop to check if nums1[i] == nums2[i]
-    for(let i=0; i<nums1.length; i++){
-        //grab the num1[i]
-        let digit = nums1[i]
-        for(let j=0 ; j<nums2.length; j++){
-            let greater = -1
-            let digit2 = nums2[j]
-            if(digit == digit2){
-                for(let m=(j+ 1); m<nums2.length; m++){
-                    if(nums2[m]>digit){
-                        greater = nums2[m]
-                        break
-                    }
+    let map = new Map()
+
+    for(let i=0; i<nums2.length; i++){
+        map.set(nums2[i],i)}
+         for (let k= 0;k<nums1.length;k++) {
+            let digit = nums1[k]
+            let index = map.get(digit)
+            let num = -1
+
+            for(let j=index+1; j<nums2.length; j++){
+                if(nums2[j] >digit){
+                    num = nums2[j]
+                    break
                 }
-                greaterEle.push(greater)
-                break
             }
+            greaterEle.push(num)
+            
+
         }
-    }
+    
     return greaterEle
 }
 
