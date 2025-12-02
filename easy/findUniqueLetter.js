@@ -47,19 +47,38 @@
  */
 var firstUniqChar = function(s) {
     //use map to set the letters of string with its number of freq
-    let map = new Map()
-    for(let char of s){
-        map.set(char,(map.get(char)||0)+1)
-    }
+    // let map = new Map()
+    // for(let char of s){
+    //     map.set(char,(map.get(char)||0)+1)
+    // }
 
-    //use loop on array to check the freq of char from map 
-    for(let i=0; i<s.length; i++){
-        //if freq ===1 return the index of that char
-        if(map.get(s[i]) === 1){
-            return i
-        }
+    // //use loop on array to check the freq of char from map 
+    // for(let i=0; i<s.length; i++){
+    //     //if freq ===1 return the index of that char
+    //     if(map.get(s[i]) === 1){
+    //         return i
+    //     }
+    // }
+    // return -1
+
+
+
+   // --------------------------------
+
+   //solution using array  -- only works for lowerCase letters used ASCII vals
+
+   let frq = Array(26).fill(0)
+
+   for(let char of s){
+    frq[char.charCodeAt(0)-97]++
+   }
+   for(let i=0; i<s.length; i++){
+    if(frq[s[i].charCodeAt(0)-97]===1){
+        return i
     }
-    return -1
+      
+   }
+   return -1
 };
 
 //test cases
