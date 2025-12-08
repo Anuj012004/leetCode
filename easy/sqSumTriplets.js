@@ -27,24 +27,43 @@
 
 // 1 <= n <= 250
 
+// /**
+//  * @param {number} n
+//  * @return {number}
+//  */
+// var countTriples = function(n) {
+//     let counter= 0
+//     let arr = []
+//     for(let i=1; i<=n ;i++){
+//        arr.push(i)
+//     }
+//     for(let i=0; i<arr.length; i++){
+//         for(let j=i+1; j<arr.length; j++){
+//             for(let k=j+1; k<arr.length ; k++){
+//                 if((arr[i]**2 + arr[j]**2) == arr[k]**2){
+//                     counter++
+//                 }
+//             }
+//         }
+//     }
+//     return counter*2
+    
+// };
+//--------------------------------
+
 /**
  * @param {number} n
  * @return {number}
  */
 var countTriples = function(n) {
     let counter= 0
-    let arr = []
-    for(let i=1; i<=n ;i++){
-       arr.push(i)
-    }
-    for(let i=0; i<arr.length; i++){
-        for(let j=i+1; j<arr.length; j++){
-            for(let k=j+1; k<arr.length ; k++){
-                if((arr[i]**2 + arr[j]**2) == arr[k]**2){
-                    counter++
-                }
-            }
+    for(let a=1; a<=n; a++){
+        for(let b=1; b<=n; b++){
+           let c = Math.sqrt(a**2 + b**2)
+           if(Number.isInteger(c) && c<=n){
+            counter++
+           }
         }
     }
-    return counter*2
+    return counter
 };
