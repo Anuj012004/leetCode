@@ -12,20 +12,37 @@
 
 //example :( [1,2,3],4) => [0,2]
 
-function returnIndicies(arr,target){
+// function returnIndicies(arr,target){
 
-    //loop to grab the first number
-    for(let i=0; i<arr.length; i++){
-        //loop to grab the second number
-        for(let k=0; k<arr.length; k++){
-            //compare the sum with target and the numbers cannot be same
-            if(arr[i]+arr[k]===target && i!==k){
-                return [i,k]
-            }
-        }
-    }
+//     //loop to grab the first number
+//     for(let i=0; i<arr.length; i++){
+//         //loop to grab the second number
+//         for(let k=0; k<arr.length; k++){
+//             //compare the sum with target and the numbers cannot be same
+//             if(arr[i]+arr[k]===target && i!==k){
+//                 return [i,k]
+//             }
+//         }
+//     }
    
-}
+// }
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    let map = new Map()
+    for(let i=0; i<nums.length; i++){
+       let num = target - nums[i]
+
+       if(map.has(num)){
+        return [map.get(num),i]
+       }
+    map.set(nums[i],i)  
+    }
+};
 
 //test cases
 
