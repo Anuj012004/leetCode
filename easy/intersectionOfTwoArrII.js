@@ -38,17 +38,39 @@
  * @return {number[]}
  */
 var intersect = function(nums1, nums2) {
-    let result = []
-    for(let i=0; i<nums1.length; i++){
-        for(let j=0; j<nums2.length; j++){
-            if(nums1[i]==nums2[j]){
-                result.push(nums1[i])
-                nums2.splice(j,1)
-                break
-            }
+    // let result = []
+    // for(let i=0; i<nums1.length; i++){
+    //     for(let j=0; j<nums2.length; j++){
+    //         if(nums1[i]==nums2[j]){
+    //             result.push(nums1[i])
+    //             nums2.splice(j,1)
+    //             break
+    //         }
+    //     }
+    // }
+    // return result
+
+    //-----------------------
+
+    //create a map of nums 1
+    //store the values in it by freq
+    //use a loop on nums2 
+    //if nums2[i] existed in map push it 
+    //descrese its freq by 1 
+    //return the res
+
+    let res =[]
+    let map = new Map()
+    for(let val of nums1){
+        map.set(val, (map.get(val)||0)+1)
+    }
+    for(let i=0; i<nums2.length; i++){
+        if(map.has(nums2[i]) && map.get(nums2[i])>0){
+            res.push(nums2[i])
+            map.set(nums2[i], (map.get(nums2[i])-1))
         }
     }
-    return result
+    return res
 
 };
 
