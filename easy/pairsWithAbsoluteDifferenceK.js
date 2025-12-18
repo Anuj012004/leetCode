@@ -69,14 +69,37 @@
  * @return {number}
  */
 var countKDifference = function(nums, k) {
-    let counter = 0
-    for(let i=0; i<nums.length; i++){
-        for(let j=i+1; j<nums.length; j++){
-            let absoluteDiff = Math.abs(nums[i]-nums[j])
-            if(absoluteDiff==k){
-                counter++
-            }
+    // let counter = 0
+    // for(let i=0; i<nums.length; i++){
+    //     for(let j=i+1; j<nums.length; j++){
+    //         let absoluteDiff = Math.abs(nums[i]-nums[j])
+    //         if(absoluteDiff==k){
+
+    //             counter++
+    //         }
+    //     }
+    // }
+    // return counter
+
+
+    //create map 
+    //create counter
+    //use loop
+    //store val in map if map contain num-k = val (a-b=k can be a-k=b) counter++
+    //also if num+k = val (a-b=k --  a=k+b) counter++
+    //map set (num, freq)
+
+    let map = new Map()
+    let counter= 0
+    for(let num of nums){
+        if(map.has(num-k)){
+            counter += map.get(num-k)
         }
+        if(map.has(num+k)){
+            counter += map.get(num+k)
+        }
+
+        map.set(num,(map.get(num)||0)+1)
     }
     return counter
 };
