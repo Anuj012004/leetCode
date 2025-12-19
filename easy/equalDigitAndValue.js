@@ -60,26 +60,46 @@
  * @return {boolean}
  */
 var digitCount = function(num) {
-      //split the string into an array
-    let array = num.split('')
-    //use outer loop to grab the number
-    for(let i=0; i<array.length; i++){
-        let num = array[i]
-        //set counter for number
-        let counter =0
-        // inner loop to count the numbers 
-        for(let j=0; j<array.length; j++){
-            if(array[j]===String(i)){
-                counter++
-            }
+//       //split the string into an array
+//     let array = num.split('')
+//     //use outer loop to grab the number
+//     for(let i=0; i<array.length; i++){
+//         let num = array[i]
+//         //set counter for number
+//         let counter =0
+//         // inner loop to count the numbers 
+//         for(let j=0; j<array.length; j++){
+//             if(array[j]===String(i)){
+//                 counter++
+//             }
             
-        }
-        // if counter not equal to value
-        if(counter !== Number(num)){
+//         }
+//         // if counter not equal to value
+//         if(counter !== Number(num)){
+//             return false
+//         }
+//     }
+//     //return true
+//   return true
+
+    //-----------------------
+    //create a map
+    //store num[i] in map with their freq
+    //loop on the num 
+    //if index[i]  count of digit i!== value return false 
+    //return true
+          let map = new Map()
+  for(let char of num){
+    map.set(char,(map.get(char)||0)+1)}
+    
+    for(let i=0;i<num.length; i++){
+        let actualVal = map.get(String(i)) ||0
+        let expectedVal = Number(num[i])
+        if(actualVal!==expectedVal){
             return false
         }
+
     }
-    //return true
   return true
 };
 
