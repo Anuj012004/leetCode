@@ -33,12 +33,29 @@
  * @return {boolean}
  */
 var checkIfPangram = function(sentence) {
-    //split the sentence into an array
-    let sentenceArray = sentence.split('')
-    //convert sentence to set 
-    let set = new Set(sentence)
-    //size of set must be 26 there as 26 alphabets
-    return set.size === 26
+    // //split the sentence into an array
+    // let sentenceArray = sentence.split('')
+    // //convert sentence to set 
+    // let set = new Set(sentence)
+    // //size of set must be 26 there as 26 alphabets
+    // return set.size === 26
+
+
+    //--------------------------------
+
+    //create a string from a to z
+    //use loop to sentence 
+    //if char is not present in string a to z return false
+    //return true
+
+    let str = 'abcdefghijklmnopqrstuvwyz'
+    let arr = str.split('')
+    for(let char of str){
+        if(!sentence.includes(char)){
+            return false
+        }
+    }
+    return true
 };
 
 //test cases
