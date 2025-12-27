@@ -43,15 +43,30 @@
  * @return {number}
  */
 var arithmeticTriplets = function(nums, diff) {
-    let numberOfTriplets = 0
-    for(let i=0; i<nums.length; i++){
-        for(let j=i+1; j<nums.length; j++){
-            for(let k=j+1; k<nums.length; k++){
-                if(nums[j]-nums[i]===diff && nums[k]-nums[j]===diff ){
-                    numberOfTriplets++
-                }
-            }
+    // let numberOfTriplets = 0
+    // for(let i=0; i<nums.length; i++){
+    //     for(let j=i+1; j<nums.length; j++){
+    //         for(let k=j+1; k<nums.length; k++){
+    //             if(nums[j]-nums[i]===diff && nums[k]-nums[j]===diff ){
+    //                 numberOfTriplets++
+    //             }
+    //         }
+    //     }
+    // }
+    // return numberOfTriplets
+
+    //numbers are strictly increasing means no duplicate 
+    //create a set of nums
+    //if set contain number which is equals to the current num + diff 
+    // and if number set contain num+diff+diff = num + 2diff 
+    //if both true counter++
+
+    let set = new Set(nums)
+    let counter=0
+    for(let num of nums){
+        if(set.has(num+diff) && set.has(num + 2*diff)){
+            counter+=1
         }
     }
-    return numberOfTriplets
+    return counter
 };
