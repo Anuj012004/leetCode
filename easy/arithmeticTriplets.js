@@ -61,12 +61,37 @@ var arithmeticTriplets = function(nums, diff) {
     // and if number set contain num+diff+diff = num + 2diff 
     //if both true counter++
 
-    let set = new Set(nums)
-    let counter=0
-    for(let num of nums){
-        if(set.has(num+diff) && set.has(num + 2*diff)){
-            counter+=1
+    // let set = new Set(nums)
+    // let counter=0
+    // for(let num of nums){
+    //     if(set.has(num+diff) && set.has(num + 2*diff)){
+    //         counter+=1
+    //     }
+    // }
+    // return counter
+
+
+    let counter =0
+    let i=0, j=1, k=2
+    while(k<nums.length){
+        let diff1 = nums[j]-nums[i]
+        let diff2 = nums[k]-nums[j]
+        if(diff1===diff && diff2===diff){
+            counter++
+            i++
+            j++
+            k++
+        }else if(diff1<diff){
+            j++
+        }else if(diff1>diff){
+            i++
+        }else if(diff2<diff){
+            k++
+        }else if(diff2>diff){
+            j++
         }
+        if (i === j) j++;
+        if (j === k) k++;
     }
     return counter
 };
