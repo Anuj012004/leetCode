@@ -74,8 +74,31 @@ var minimumAverage = function(nums) {
     //grab the elements from begin and ending 
     //find the avg and store it in a new arr
     //return the smallest avg val from the arr
-    let avgs = []
+//     let avgs = []
+//     nums.sort((a,b)=>a-b)
+
+//     let left = 0
+//     let right = nums.length-1
+
+//     while(left<right){
+//         let leftOne = nums[left]
+//         let rightOne = nums[right]
+//         let avg = (leftOne+rightOne) /2
+//         avgs.push(avg)
+//         left++
+//         right--
+//     }
+//     return Math.min(...avgs)
+
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minimumAverage = function(nums) {
+    
     nums.sort((a,b)=>a-b)
+    let min = Infinity
 
     let left = 0
     let right = nums.length-1
@@ -84,13 +107,14 @@ var minimumAverage = function(nums) {
         let leftOne = nums[left]
         let rightOne = nums[right]
         let avg = (leftOne+rightOne) /2
-        avgs.push(avg)
+        min = Math.min(min,avg)
         left++
         right--
     }
-    return Math.min(...avgs)
+    return min
 };
+ };
 
-//test cases
+//test case
 
 console.log(minimumAverage([7,8,3,4,15,13,4,1]))
