@@ -37,12 +37,20 @@
  * @return {number[]}
  */
 var shuffle = function(nums, n) {
-    let subArr1 = nums.slice(0,n)
-    let subArr2 = nums.slice(n)
+    // let subArr1 = nums.slice(0,n)
+    // let subArr2 = nums.slice(n)
+    // let res = []
+    // for(let i=0; i<subArr1.length; i++){
+    //     res.push(subArr1[i])
+    //     res.push(subArr2[i])
+    // }
+    // return res
+
     let res = []
-    for(let i=0; i<subArr1.length; i++){
-        res.push(subArr1[i])
-        res.push(subArr2[i])
+
+    for(let i=0; i<n; i++){
+        res.push(nums[i])
+        res.push(nums[i+n])
     }
     return res
 };
