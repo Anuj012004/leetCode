@@ -41,16 +41,35 @@
  * @return {boolean}
  */
 var containsNearbyDuplicate = function(nums, k) {
-    //loop to grab the first value
-    for(let i=0; i<nums.length; i++){
-        //grab second num
-        for(let j=i+1; j<nums.length; j++){
-            if(nums[i]===nums[j] && Math.abs(i-j)<=k){
-                return true
-            }
+    // //loop to grab the first value
+    // for(let i=0; i<nums.length; i++){
+    //     //grab second num
+    //     for(let j=i+1; j<nums.length; j++){
+    //         if(nums[i]===nums[j] && Math.abs(i-j)<=k){
+    //             return true
+    //         }
+    //     }
+    // }
+    // return false
+
+    let seen = new Set();
+    let left = 0;
+
+    for (let right = 0; right < nums.length; right++) {
+
+        if (seen.has(nums[right])) {
+            return true;
+        }
+
+        seen.add(nums[right]);
+
+        if (right - left >= k) {
+            seen.delete(nums[left]);
+            left++;
         }
     }
-    return false
+
+    return false;
 };
 
 //test cases
