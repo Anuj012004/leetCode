@@ -47,4 +47,9 @@ var fib = function(n) {
         b = temp;
     }
     return b;
+
+    //naive approach no dp
+        if(n<=1) return n
+
+    return fib(n-1) + fib(n-2)
 };
