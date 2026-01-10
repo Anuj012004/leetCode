@@ -47,28 +47,49 @@
 //-------------
 
 
+// /**
+//  * @param {string[]} strs
+//  * @return {string[][]}
+//  */
+// var groupAnagrams = function(strs) {
+//     //if strs has only one element or it is empty
+//     if(strs.length===1){
+//         return [[strs[0]]]
+//     }
+//     let map = new Map();
+
+//     for (let str of strs) {
+//         // Sort the string alphabetically
+//         let sorted = str.split('').sort().join('');
+
+//         if (!map.has(sorted)) {
+//             map.set(sorted, []);
+//         }
+//         map.get(sorted).push(str);
+//     }
+
+//     return Array.from(map.values());
+// };
+
 /**
  * @param {string[]} strs
  * @return {string[][]}
  */
 var groupAnagrams = function(strs) {
-    //if strs has only one element or it is empty
-    if(strs.length===1){
-        return [[strs[0]]]
-    }
-    let map = new Map();
+    //create a map
+    //used sorted value as key 
+    //if key present we push the word in strs , []
+    //return object values
 
-    for (let str of strs) {
-        // Sort the string alphabetically
-        let sorted = str.split('').sort().join('');
-
-        if (!map.has(sorted)) {
-            map.set(sorted, []);
+    let map = {}
+    for(let word of strs){
+        let key = word.split('').sort().join('')
+        if(!map[key]){
+            map[key] = []
         }
-        map.get(sorted).push(str);
+        map[key].push(word)
     }
-
-    return Array.from(map.values());
+    return Object.values(map)
 };
 
 
