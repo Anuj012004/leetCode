@@ -74,14 +74,25 @@ var findIndices = function(nums, indexDifference, valueDifference) {
    //if satisfied return the indicies to the arr and return the res
    //return [-1,-1]
 
-   for(let i=0; i<nums.length; i++){
-    for(let j=0; j<nums.length; j++){
-        if((Math.abs(i-j)>=indexDifference) &&( Math.abs(nums[i]-nums[j])>=valueDifference)){
-            return [i,j]
-        }
-    }
-   }
-   return [-1,-1]
+//    for(let i=0; i<nums.length; i++){
+//     for(let j=0; j<nums.length; j++){
+//         if((Math.abs(i-j)>=indexDifference) &&( Math.abs(nums[i]-nums[j])>=valueDifference)){
+//             return [i,j]
+//         }
+//     }
+//    }
+//    return [-1,-1]
+
+//------------------------------------------------
+    //lets optimize 
+
+    //create two pointers 
+    //use loop 
+
+    // let left = 0
+    // let right = nums.length
+
+    // while()
 };
 
 //test cases
