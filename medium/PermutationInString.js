@@ -51,9 +51,14 @@ var checkInclusion = function(s1, s2) {
         if(right-left+1===s1.length){
             if(mapsEqual(s1Map,windowMap)) return true
             let charLeft = s2[left]
-            windowMap.set(charLeft,(windowMap.get(charLeft))-1)
-            if(windowMap.get(charLeft)===0){
+            // windowMap.set(charLeft,(windowMap.get(charLeft))-1)
+            // if(windowMap.get(charLeft)===0){
+            //     windowMap.delete(charLeft)
+            // }
+            if(windowMap.get(charLeft)===1){
                 windowMap.delete(charLeft)
+            }else{
+                windowMap.set(charLeft,(windowMap.get(charLeft))-1)
             }
      left++
         }
