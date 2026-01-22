@@ -48,33 +48,64 @@
 // All the words in s are separated by a single space.
 
 
+// /**
+//  * @param {string} pattern
+//  * @param {string} s
+//  * @return {boolean}
+//  */
+// var wordPattern = function(pattern, s) {
+//     let S = s.split(' ')
+//     if(pattern.length!==S.length) return false
+
+//     let mapS = new Map()
+//     let mapPattern = new Map()
+
+//     for(let i=0; i<pattern.length; i++){
+//         let char = S[i]
+//         let patternChar = pattern[i]
+
+//         if(mapS.has(char)){
+//             if(mapS.get(char)!==patternChar) return false
+//         }else{
+//             mapS.set(char,patternChar)
+//         }
+
+//         if(mapS.has(patternChar)){
+//             if(mapS.get(patternChar)!==char) return false
+//         }else{
+//             mapS.set(patternChar,char)
+//         }
+//     }
+//         return true
+// };
+
 /**
  * @param {string} pattern
  * @param {string} s
  * @return {boolean}
  */
 var wordPattern = function(pattern, s) {
-    let S = s.split(' ')
-    if(pattern.length!==S.length) return false
+const words = s.split(" ")
+    
+    // length must match
+    if (pattern.length !== words.length) return false
 
-    let mapS = new Map()
-    let mapPattern = new Map()
+    const pToW = new Map() // pattern -> word
+    const wToP = new Map()// word -> pattern
 
-    for(let i=0; i<pattern.length; i++){
-        let char = S[i]
-        let patternChar = pattern[i]
-
-        if(mapS.has(char)){
-            if(mapS.get(char)!==patternChar) return false
-        }else{
-            mapS.set(char,patternChar)
+    for (let i = 0; i < pattern.length; i++) {
+        const ch = pattern[i]
+        const word = words[i]
+        if (pToW.has(ch)) {
+            if (pToW.get(ch) !== word) return false;
+        } else {
+            pToW.set(ch, word)
         }
-
-        if(mapS.has(patternChar)){
-            if(mapS.get(patternChar)!==char) return false
-        }else{
-            mapS.set(patternChar,char)
+        if (wToP.has(word)) {
+            if (wToP.get(word) !== ch) return false
+        } else {
+            wToP.set(word, ch)
         }
     }
-        return true
+    return true
 };
