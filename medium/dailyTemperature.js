@@ -71,6 +71,30 @@ var dailyTemperatures = function(temperatures) {
     return answer
 };
 
+
+/**
+ * @param {number[]} temperatures
+ * @return {number[]}
+ */
+var dailyTemperatures = function(temperatures) {
+        let res = new Array(temperatures.length).fill(0);
+    let stack = [];
+
+    for (let i = 0; i < temperatures.length; i++) {
+        while (
+            stack.length &&
+            temperatures[i] > temperatures[stack[stack.length - 1]]
+        ) {
+            let prev = stack.pop();
+            res[prev] = i - prev;
+        }
+
+        stack.push(i);
+    }
+
+    return res;
+};
+
 //test cases
 
 console.log(dailyTemperatures([30,60,90]),'output should be [1,1,0]')
