@@ -81,15 +81,20 @@ var groupAnagrams = function(strs) {
     //if key present we push the word in strs , []
     //return object values
 
-    let map = {}
+    let map = new Map()
     for(let word of strs){
         let key = word.split('').sort().join('')
-        if(!map[key]){
-            map[key] = []
+        // if(!map[key]){
+        //     map[key] = []
+        // }
+        // map[key].push(word)
+        if(!map.has(key)){
+            map.set(key,[])
         }
-        map[key].push(word)
+        map.get(key).push(word)
     }
-    return Object.values(map)
+    // return Object.values(map)
+    return [...map.values()]
 };
 
 
