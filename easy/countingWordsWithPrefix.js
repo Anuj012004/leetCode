@@ -51,15 +51,22 @@ var prefixCount = function(words, pref) {
 
     let counter = 0
     let prefLen = pref.length
+    // for(let word of words){
+    //     if(word.length>=prefLen){
+    //         let substring = word.slice(0,prefLen)
+    //         if(substring===pref){
+    //             counter++
+    //         }
+    //     }
+    // }
+    // return counter
+
     for(let word of words){
-        if(word.length>=prefLen){
-            let substring = word.slice(0,prefLen)
-            if(substring===pref){
-                counter++
-            }
-        }
+        if(word.startsWith(pref)) counter++
     }
     return counter
+
+
 };
 
 //test cases
