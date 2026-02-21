@@ -32,26 +32,55 @@
  */
 var longestConsecutive = function(nums) {
 
-    let set = new Set(nums);
-    let longest = 0;
+    // let set = new Set(nums);
+    // let longest = 0;
 
-    for (let num of set) {
+    // for (let num of set) {
 
-        if (!set.has(num - 1)) {
+    //     if (!set.has(num - 1)) {
 
-            let currentNum = num;
-            let count = 1;
+    //         let currentNum = num;
+    //         let count = 1;
 
-            while (set.has(currentNum + 1)) {
-                currentNum++;
-                count++;
+    //         while (set.has(currentNum + 1)) {
+    //             currentNum++;
+    //             count++;
+    //         }
+
+    //         longest = Math.max(longest, count);
+    //     }
+    // }
+
+    // return longest;
+     // arr -> nums -> integers, it can be an empty as well, no special symbols
+        // number -> seq of elements that can be formed
+        // if no seq found return 0
+
+
+        // create a Set of nums (no duplication)
+        // create a  variale that store the lenght of the longest sequence
+        //use loop on the elements of set to find the current num, count = 1
+        // current num is number which do not have the prev number 
+        //use loop to find the number of seq elements
+        // store the longest length in the var
+        //return the length
+
+
+        let unique = new Set(nums)
+        let longestSequence = 0
+        for(let num of unique){
+            if(!unique.has(num-1)){
+                let currentNum = num
+                let currentSequence = 1
+
+                while(unique.has(currentNum + 1)){
+                    currentNum +=1
+                    currentSequence +=1
+                }
+                longestSequence = Math.max(longestSequence,currentSequence)
             }
-
-            longest = Math.max(longest, count);
         }
-    }
-
-    return longest;
+        return longestSequence
 };
 
 
