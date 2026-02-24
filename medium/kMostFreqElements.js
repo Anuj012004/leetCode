@@ -57,18 +57,42 @@
  * @return {number[]}
  */
 var topKFrequent = function(nums, k) {
-    //create a map of nums with freq
+    // //create a map of nums with freq
+    // let map = new Map()
+    // for(let num of nums){
+    //     map.set(num,( map.get(num)||0)+1)
+    // }
+    // let arr = [...map]
+    // let sorted = arr.sort((a,b)=>b[1]-a[1])
+    // let res = []
+    // for(let i=0; i<k; i++){
+    //     res.push(sorted[i][0])
+    // }
+    // return res
+
+    //optimized code with bucket freq
     let map = new Map()
-    for(let num of nums){
-        map.set(num,( map.get(num)||0)+1)
+    for(let n of nums){
+        map.set(n,(map.get(n)||0)+1)
     }
-    let arr = [...map]
-    let sorted = arr.sort((a,b)=>b[1]-a[1])
-    let res = []
-    for(let i=0; i<k; i++){
-        res.push(sorted[i][0])
+    //create bucket
+    let bucket = new Array(nums.length+1)
+    //fill bucket index as frequency
+    for(let [val,freq] of map){
+        if(!bucket[freq]){
+            bucket[freq]= []
+        }
+        bucket[freq].push(val)
     }
-    return res
+    //arr to store the kth freq elements
+    let arr = []
+    //loop to get the k elements as the num with high freq are at the right side of the arr large the index - higher the freq
+    for(let i=bucket.length-1;i>=0 && arr.length<k; i--){
+        if(bucket[i]){
+            arr.push(...bucket[i])
+        }
+    }
+    return arr
     
 };
 
