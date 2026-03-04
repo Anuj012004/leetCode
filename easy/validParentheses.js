@@ -106,3 +106,32 @@ var isValid = function(s) {
 
         }
         return stack.length===0
+
+        /**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+           // string -> consist of specific char, cannot be empty 
+        //bool -> true or false
+        //true -> open bracekets are closed as well
+        // closed in correct order
+        //every clsoed brackets has open  bracket
+
+        // if all these conditions are statisfied -> true else false
+        let stack = []
+        for(let char of s){
+            if(char==='('){
+                stack.push(')')
+            }else if(char==='{'){
+                stack.push('}')
+            }else if(char==='['){
+                stack.push(']')
+            }else{
+                if(stack.pop()!==char){
+                    return false
+                }
+            }
+        }
+       return stack.length===0
+};
