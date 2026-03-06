@@ -95,6 +95,39 @@ var dailyTemperatures = function(temperatures) {
     return res;
 };
 
+class Solution {
+    /**
+     * @param {number[]} temperatures
+     * @return {number[]}
+     */
+    dailyTemperatures(temperatures) {
+        //create a variable to store the res
+        //outer loop to get the current temperature
+        //inner loop to iterate over the temperatures
+        //set var found false
+        //if current temp<nexTemp push j-1 in the res, found to be true and break the code 
+        //if notfound then push zero to the res
+        //return the res
+
+        let res = []
+        for(let i=0; i<temperatures.length; i++){
+            let found = false
+            for(let j=i+1; j<temperatures.length; j++){
+                if(temperatures[i]<temperatures[j]){
+                    found = true
+                    res.push(j-i)
+                    break
+                }
+               
+            }
+             if(!found){
+                    res.push(0)}
+        }
+        return res
+    }
+}
+
+
 //test cases
 
 console.log(dailyTemperatures([30,60,90]),'output should be [1,1,0]')
