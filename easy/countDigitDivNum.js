@@ -49,5 +49,22 @@ var countDigits = function(num) {
     
 };
 
+
+/**
+ * @param {number} num
+ * @return {number}
+ */
+var countDigits = function(num) {
+    let counter = 0
+    let original = num
+    while(num>0){
+        let digit = num%10
+        if(original%digit===0) counter++
+        num = Math.floor(num/10)
+    }
+    return counter
+    
+};
+
 console.log(countDigits(7))
 console.log(countDigits(121))
