@@ -56,3 +56,25 @@ var mostFrequentEven = function(nums) {
     }
     return res
 };
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var mostFrequentEven = function(nums) {
+    let res = -1
+    let gVal = 0
+    let map = new Map()
+    for(let n of nums){
+        if(n%2===0){
+            map.set(n,(map.get(n)||0)+1)
+        }
+    }
+    for(let [key,val] of map){
+        if(val>gVal || val===gVal && key<res){
+            gVal = val
+            res = key
+        }
+    }
+    return res
+};
