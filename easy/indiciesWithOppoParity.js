@@ -50,16 +50,35 @@
  * @return {number[]}
  */
 var countOppositeParity = function(nums) {
-    let result = []
-    for(let i=0; i<nums.length; i++){
-        let counter = 0
-        let digit = nums[i] % 2
-        for(let j=i+1; j<nums.length; j++){
-            if((i<j) && (nums[j]%2!==digit)){
-                counter++
-            }
+    // let result = []
+    // for(let i=0; i<nums.length; i++){
+    //     let counter = 0
+    //     let digit = nums[i] % 2
+    //     for(let j=i+1; j<nums.length; j++){
+    //         if((i<j) && (nums[j]%2!==digit)){
+    //             counter++
+    //         }
+    //     }
+    //     result.push(counter)
+    // }
+    // return result
+
+    let n = nums.length
+    let result = new Array(n).fill(0)
+
+    let evenCount = 0
+    let oddCount = 0
+    for(let i=n-1; i>=0; i--){
+        if(nums[i]%2===0){
+            result[i]=oddCount
+            evenCount++
+        }else{
+            result[i]=evenCount
+            oddCount++
         }
-        result.push(counter)
     }
     return result
 };
+
+//test case
+console.log(countOppositeParity([1,2,3,4]))
