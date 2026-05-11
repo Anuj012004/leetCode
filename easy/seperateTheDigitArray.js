@@ -41,7 +41,7 @@
 var separateDigits = function(nums) {
     let res = []
     for(let num of nums){
-      if(num<9){
+      if(num<=9){
         res.push(num)
       }else{
        let arr =  num.toString().split('')
@@ -52,7 +52,6 @@ var separateDigits = function(nums) {
     }
     return res
 };
-
 
 console.log(separateDigits([13,25,83,77]))
 console.log(separateDigits([1,2,3,5,6,4,7]))
