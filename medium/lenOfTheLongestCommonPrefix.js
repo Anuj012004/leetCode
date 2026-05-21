@@ -44,24 +44,51 @@
  * @param {number[]} arr1
  * @param {number[]} arr2
  * @return {number}
+//  */
+// var longestCommonPrefix = function(arr1, arr2) {
+//     let longPrefix = 0
+//     for(let i=0; i<arr1.length; i++){
+//         for(let j=0; j<arr2.length; j++){
+//             let first = arr1[i].toString()
+//             let second = arr2[j].toString()
+//             let n = Math.min(first.length,second.length)
+//             let count = 0
+//             for(let k=0; k<n; k++){
+//                 if(first[k]===second[k]){
+//                     count++
+//                 }else{
+//                     break
+//                 }
+//             }
+//             longPrefix = Math.max(longPrefix,count)
+//         }
+//     }
+//     return longPrefix
+// };
+
+
+/**
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @return {number}
  */
 var longestCommonPrefix = function(arr1, arr2) {
-    let longPrefix = 0
-    for(let i=0; i<arr1.length; i++){
-        for(let j=0; j<arr2.length; j++){
-            let first = arr1[i].toString()
-            let second = arr2[j].toString()
-            let n = Math.min(first.length,second.length)
-            let count = 0
-            for(let k=0; k<n; k++){
-                if(first[k]===second[k]){
-                    count++
-                }else{
-                    break
-                }
-            }
-            longPrefix = Math.max(longPrefix,count)
+    let set = new Set()
+    let longest = 0
+    for(let num of arr1){
+        while(num>0){
+            set.add(num)
+            num = Math.floor(num/10)
         }
     }
-    return longPrefix
+    for(let num of arr2){
+        while(num>0){
+            if(set.has(num)){
+                longest = Math.max(longest, num.toString().length)
+                break
+            }
+            num = Math.floor(num/10)
+        }
+    }
+    return longest
 };
