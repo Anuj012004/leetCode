@@ -64,3 +64,25 @@ var numberOfSpecialChars = function(word) {
     }
     return count
 };
+
+/**
+ * @param {string} word
+ * @return {number}
+ */
+var numberOfSpecialChars = function(word) {
+    let count = 0
+    for(let w of word){
+        let low = true
+        if(w.toUpperCase()===w){
+            low = false
+        }
+        if(low){
+           if (word.includes(w.toUpperCase())){
+            count++
+            word = word.replaceAll(w,'')
+            word = word.replaceAll(w.toUpperCase(),'')
+           }
+        }
+    }
+    return count
+};
