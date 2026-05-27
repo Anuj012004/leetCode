@@ -76,3 +76,33 @@ var numberOfSpecialChars = function(word) {
     }
     return count
 };
+
+
+/**
+ * @param {string} word
+ * @return {number}
+ */
+var numberOfSpecialChars = function(word) {
+    let count = 0;
+
+    for (let c = 0; c < 26; c++) {
+
+        let ch = String.fromCharCode(97 + c); // 'a' to 'z'
+
+        let lower = ch;
+        let upper = ch.toUpperCase();
+
+        let lastLower = word.lastIndexOf(lower);
+        let firstUpper = word.indexOf(upper);
+
+        // must exist in both cases
+        if (lastLower !== -1 && firstUpper !== -1) {
+
+            if (lastLower < firstUpper) {
+                count++;
+            }
+        }
+    }
+
+    return count;
+};
