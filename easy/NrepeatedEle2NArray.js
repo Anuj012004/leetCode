@@ -56,9 +56,10 @@ var repeatedNTimes = function (nums) {
     let map = new Map()
     let n = nums.length / 2
     for (let num of nums) {
-        map.set(num,(map.get(num) || 0) + 1)
+        if(map.has(num)) return num
+        else map.set(num,(map.get(num) || 0) + 1)
     }
-    for (let num of nums) {
-        if (map.get(num) === n) return num
-    }
+    // for (let num of nums) {
+    //     if (map.get(num) === n) return num
+    // }
 };
