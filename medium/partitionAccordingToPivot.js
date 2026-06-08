@@ -63,3 +63,24 @@ var pivotArray = function(nums, pivot) {
     }
     return result
 };
+
+/**
+ * @param {number[]} nums
+ * @param {number} pivot
+ * @return {number[]}
+ */
+var pivotArray = function(nums, pivot) {
+    let small = []
+    let equal = []
+    let great = []
+    for(let num of nums){
+        if(num<pivot){
+            small.push(num)
+        }else if(num===pivot){
+            equal.push(num)
+        }else{
+            great.push(num)
+        }
+    }
+    return [...small,...equal,...great]
+};
