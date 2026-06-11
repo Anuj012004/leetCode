@@ -65,3 +65,25 @@ var minSteps = function(s, t) {
     return res
 	
 };
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {number}
+ */
+var minSteps = function(s, t) {
+    let arr = new Array(26).fill(0)
+    let res = 0
+    for(let ch of s){
+        arr[ch.charCodeAt(0)-97]++
+    }
+     for(let ch of t){
+        arr[ch.charCodeAt(0)-97]--
+    }
+    for(let i of arr){
+        if(i>0){
+            res+=i
+        }
+    }
+    return res
+};
