@@ -66,6 +66,24 @@ var singleNumber = function(nums) {
 };
 
 
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function(nums) {
+    let map = new Map()
+    for(let num of nums){
+        map.set(num,(map.get(num)||0)+1)
+    }
+    for(let [key,val] of map){
+        if(val===1){
+            return key
+        }
+    }
+};
+
+
 //test cases 
 
 console.log(singleNumber([2,2,1]), 'should be 1')
