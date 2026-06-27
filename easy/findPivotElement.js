@@ -54,3 +54,16 @@ var pivotInteger = function(n) {
     }
     return -1
 };
+
+
+
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var pivotInteger = function(n) {
+    let total = n *(n+1) / 2
+    let pivot = Math.sqrt(total)
+    return Number.isInteger(pivot)?pivot:-1
+};
