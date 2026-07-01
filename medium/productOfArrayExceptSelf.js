@@ -31,23 +31,44 @@
 
 // given array -> nums, always contain atleast 2 elements, the elements in nums between -30 and 30 inclusive.
 
+// /**
+//  * @param {number[]} nums
+//  * @return {number[]}
+//  */
+// var productExceptSelf = function(nums) {
+//     let result = []
+//    for(let i=0; i<nums.length; i++){
+//     let product = 1
+//     for(let j=0; j<nums.length; j++){
+//         if(i!==j){
+//             product *= nums[j]
+//         }
+//     }
+//     result.push(product)
+//    }
+//    return result
+// };
+
+
 /**
  * @param {number[]} nums
  * @return {number[]}
  */
 var productExceptSelf = function(nums) {
-    let result = []
-   for(let i=0; i<nums.length; i++){
-    let product = 1
-    for(let j=0; j<nums.length; j++){
-        if(i!==j){
-            product *= nums[j]
-        }
+    let res = new Array(nums.length-1)
+    let prefix = 1
+    let suffix = 1
+    for(let i=0; i<nums.length; i++){
+        res[i] = prefix
+        prefix *= nums[i]
     }
-    result.push(product)
-   }
-   return result
+    for(let i=nums.length-1; i>=0; i--){
+        res[i] *= suffix
+        suffix *= nums[i]
+    }
+    return res
 };
+
 
 //test cases
 
