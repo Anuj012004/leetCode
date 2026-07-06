@@ -49,19 +49,33 @@
  * @return {number[]}
  */
 var rearrangeArray = function(nums) {
-    let posi = []
-    let nega = []
-    let res = []
+    // let posi = []
+    // let nega = []
+    // let res = []
+    // for(let i=0; i<nums.length; i++){
+    //     if(nums[i]>=0){
+    //         posi.push(nums[i])
+    //     }else{
+    //         nega.push(nums[i])
+    //     }
+    // }
+    // for(let i=0; i<posi.length; i++){
+    //     res.push(posi[i])
+    //     res.push(nega[i])
+    // }
+    // return res
+
+    let res = new Array(nums.length)
+    let posi = 0
+    let nega = 1
     for(let i=0; i<nums.length; i++){
-        if(nums[i]>=0){
-            posi.push(nums[i])
+        if(nums[i]>0){
+            res[posi] = nums[i]
+            posi+=2
         }else{
-            nega.push(nums[i])
+            res[nega] = nums[i]
+            nega +=2
         }
-    }
-    for(let i=0; i<posi.length; i++){
-        res.push(posi[i])
-        res.push(nega[i])
     }
     return res
 };
