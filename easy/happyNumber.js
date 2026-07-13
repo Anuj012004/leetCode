@@ -75,3 +75,34 @@ var isHappy = function(n) {
 
 console.log(isHappy(15),'false')
 console.log(isHappy(10),'true')
+
+
+
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isHappy = function(n) {
+    let slow = n
+    let fast = n
+    //find square
+    const square = (number) =>{
+        let ans = 0
+        while(number>0){
+            let rem = number % 10
+            ans += rem*rem
+            number = Math.floor(number/10)
+
+        }
+        return ans
+    }
+    do{
+        slow = square(slow)
+        fast = square(square(fast))
+    }while(slow!==fast)
+
+     if(slow == 1){
+        return true
+    }
+    return false
+};
