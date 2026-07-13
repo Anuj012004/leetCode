@@ -66,3 +66,41 @@ var mergeTwoLists = function(list1, list2) {
     // Step 6: Return the real head (skip dummy)
     return dummy.next;
 };
+
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} list1
+ * @param {ListNode} list2
+ * @return {ListNode}
+ */
+var mergeTwoLists = function(list1, list2) {
+    let ans = new ListNode(-1)
+    let current = ans
+    let h1 = list1
+    let h2 = list2
+    while(h1 !== null && h2 !== null){
+        if(h1.val<=h2.val){
+            current.next = h1
+            h1 = h1.next
+            current = current.next 
+        }else if(h2.val<h1.val){
+            current.next = h2
+            h2 = h2.next
+           current =  current.next 
+        }
+    }
+    if(h1!==null){
+        current.next = h1
+    }
+    if(h2!==null){
+        current.next = h2
+    }
+    return ans.next
+};
