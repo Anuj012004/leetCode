@@ -82,3 +82,50 @@ var pairSum = function(head) {
     return sum
 
 };
+
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {number}
+ */
+var pairSum = function(head) {
+    //slow pointer, fast pointer + rev second half
+    //find the mid 
+    //rev the second half
+    //find the sum and return the maxSum
+
+    //mid
+    let slow = head
+    let fast = head
+    while(fast!==null && fast.next!==null){
+        slow = slow.next
+        fast = fast.next.next
+    }
+    //reverse the second half
+    let prev = null
+    let current = slow
+    while(current !== null){
+        let next = current.next
+        current.next = prev
+        prev = current
+        current = next
+    }
+
+    //now find the maxSum
+    let f = head
+    let l = prev
+    let maxSum = 0
+    while(l!==null){
+        maxSum = Math.max((f.val+l.val), maxSum)
+        f = f.next
+        l = l.next
+    }
+    return maxSum
+};
