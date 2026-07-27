@@ -36,3 +36,22 @@ var maxProduct = function(nums) {
     nums.sort((a,b)=>b-a)
     return (nums[0]-1)*(nums[1]-1)
 };
+
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxProduct = function(nums) {
+    let larg = 0
+    let second = 0
+    for(let num of nums){
+        if(num>=larg){
+            second = larg
+            larg = num
+        }else if(num>second){
+            second = num
+        }
+    }
+    return (larg-1)*(second-1)
+};
