@@ -53,3 +53,17 @@ var missingMultiple = function(nums, k) {
         }
     }
 };
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var missingMultiple = function(nums, k) {
+    for(let i=k; i<Infinity; i+=k){
+        if(!nums.includes(i)){
+            return i
+        }
+    }
+};
