@@ -57,12 +57,6 @@ var removeOuterParentheses = function(s) {
     let right = 0
     let str = ''
     for(let i=0; i<s.length; i++){
-        if(left === right){
-            str += (stack.slice(1,-1))
-            stack =[]
-            left = 0
-            right = 0
-        }
         stack.push(s[i])
         if(s[i]==='('){
             left++
