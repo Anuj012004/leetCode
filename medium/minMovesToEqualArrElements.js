@@ -65,38 +65,6 @@ var minMoves2 = function(nums) {
 
 //the above solution is correct but cause the tle lets go with the optimal one 
 
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var minMoves2 = function(nums) {
-    //arr nums size of n 
-    //return min moves req to make array elements equal
-    //we can incre or decre by 1 only
-
-    nums.sort((a,b)=>a-b)
-    let n = nums.length
-    // if len is odd we got the middle ele
-    //count the operation needed
-    let mid = Math.floor(n/2)
-    ele = nums[mid]
-    let mv = 0
-    for(let i=0; i<nums.length; i++){
-        let moves = 0
-        let elem = nums[i]
-        while(Math.abs(elem)!=ele){
-            moves++
-            elem +=1
-        }
-        // while(elem!=ele && elem>ele){
-        //     moves++
-        //     elem -=1
-        // }
-         mv +=moves
-    }
-    return mv
-};
-
 
 /**
  * @param {number[]} nums
