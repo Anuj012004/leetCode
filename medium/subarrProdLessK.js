@@ -54,3 +54,32 @@ var numSubarrayProductLessThanK = function(nums, k) {
     }
     return count
 };
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var numSubarrayProductLessThanK = function(nums, k) {
+    if(k<=1) return 0
+    let left = 0
+    let count = 0
+    let product = 1
+    for (let right = 0; right < nums.length; right++) {
+
+        // Include current element
+        product *= nums[right];
+
+        // Shrink window if product is >= k
+        while (product >= k) {
+            product /= nums[left];
+            left++;
+        }
+
+        // Count all valid subarrays ending at right
+        count += right - left + 1;
+    }
+
+    return count;
+};
